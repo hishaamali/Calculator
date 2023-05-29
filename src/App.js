@@ -5,18 +5,12 @@ export default function App() {
   const [result, setResult] = useState("");
 
   const handleClick = (e) => {
-    if (result === "Error") {
-      setResult(result.replace("Error", e.target.name))
+    try{
+      setResult(result.concat(e.target.name));
     }
-    else {
-      try{
-        setResult(result.concat(e.target.name));
-      }
-      catch {
-        setResult("")
-      }
+    catch {
+      setResult("")
     }
-    
   }
 
   const clear = () => {
@@ -32,7 +26,7 @@ export default function App() {
       setResult(eval(result).toString())
     }
     catch{
-      setResult("Error")
+      setResult(result)
     }
   }
 
